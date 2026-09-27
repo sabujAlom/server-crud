@@ -32,6 +32,14 @@ const client = new MongoClient(process.env.DB_URI);
         res.send(result);
     })
 
+    // post........................................
+    app.post('/products' , async(req, res)=>{
+      const newProduct= req.body;
+      const result = await productsCollection.insertOne(newProduct);
+      res.send(result)
+
+    })
+
 
 
     console.log("You successfully connected to MongoDB!");
