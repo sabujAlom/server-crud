@@ -41,6 +41,13 @@ const client = new MongoClient(process.env.DB_URI);
 
     })
 
+    // delete..................................
+     app.delete("/products/:productId", async(req, res)=>{
+       const productId = req.params.productId;
+       const query ={_id: new ObjectId(productId)};
+       const result = await productsCollection.deleteOne(query);
+       res.send(result)
+     })
 
 
     console.log("You successfully connected to MongoDB!");
